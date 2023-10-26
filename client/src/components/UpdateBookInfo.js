@@ -6,4 +6,4 @@ const UpdateBookInfo = () => {
   )
 }
 
-export default UpdateBookInfo
+export default UpdateBookInfo;
