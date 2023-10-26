@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import { useNavigate } from 'react-router-dom';
 
-const CreateBook = () => {
+const CreateBook = (props) => {
 
 //Define the state with useState hook
 const navigate = useNavigate();
@@ -24,7 +24,26 @@ const onChange= (e) =>{
 
 const onSubmit = (e) => {
     e.preventDefault();
-}  
+ 
+
+    axios
+    .post('http://localhost:8000/api/books', book)
+    .then((res)=> {
+        setBook({
+            title:'',
+            isbn:'',
+            author:'',
+            published_date:'',
+            publisher:''
+        });
+
+        //Push to /
+        navigate('/');
+    })
+    .catch((err) => {
+        console.log('Error in CreateBook!');
+    });
+};
 
   return (
     <div>CreateBook
